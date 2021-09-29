@@ -1,4 +1,4 @@
-## Sep 28 2020
+## Sep 28 2021
 
 - [Openstack installation](https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/16.1/html/standalone_deployment_guide/all-in-one-openstack-installation)
 - [Ashish Aggarwal's blog](https://github.com/rh-telco-tigers/OSP16.2-AIO)
@@ -29,5 +29,3 @@ sudo systemctl daemon-reload
 EOF
 ```
 - [OpenVS Switch Cheat Sheet](https://randomsecurity.dev/posts/openvswitch-cheat-sheet/)
-
-## Sep 29 2020
