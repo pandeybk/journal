@@ -1,5 +1,6 @@
 # Oct 9 2021
 
+# Issue 1
 https://ubuntu.com/server/docs/network-configuration
 
 ```
@@ -41,3 +42,42 @@ default via 192.168.4.1 dev eno3
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown 
 192.168.4.0/24 dev eno3 proto kernel scope link src 192.168.4.8 
 ```
+
+
+# Issue 2
+```
+# netplan apply
+bind: Address already in use
+netplan: fatal error: cannot bind to port 2983, is another daemon running?, exiting.
+```
+
+Solutions:
+you've probably confused the netplan calendaring tool with netplan the network configuration tool
+install netplan.io not netplan
+(sudo) apt install netplan.io netplan-
+
+After that save netplan config on /etc/netplan
+
+```
+cat /etc/netplan/01-network-manager-all.yaml 
+# Let NetworkManager manage all devices on this system
+#
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    eno3:
+      dhcp4: no
+      addresses:
+        - 192.168.4.8/32
+      gateway4: 192.168.4.1
+      nameservers:
+        addresses: [8.8.8.8,4.4.4.4]
+```
+
+```
+netplan apply
+```
+
+References:
+https://ubuntuforums.org/showthread.php?t=2400673
